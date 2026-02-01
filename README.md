@@ -9,3 +9,4 @@
 5. [password_generator](https://password-generator-navy-five.vercel.app/)
 6. [standard_calculator](https://standard-calculator-osamabinadnan.netlify.app/)
 7. [unit_converter](https://unit-converter-ten-coral.vercel.app/)
+8. html_previewer (Not deployed yet)
