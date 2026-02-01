@@ -1,0 +1,7 @@
+[build]
+command = "npm run build"
+publish = ".next"
+# base is optional if the toml is inside the project folder
+
+[[plugins]]
+package = "@netlify/next"
