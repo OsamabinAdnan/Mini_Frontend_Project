@@ -260,6 +260,64 @@
 
   /* QUICK VIEW MOBILE */
   @media(max-width:700px) { #quickViewContent > div { grid-template-columns:1fr !important; } }
+
+  /* SAFE MOBILE OPTIMIZATIONS (non-destructive overrides) */
+  @media (max-width: 768px) {
+    /* navbar fixes */
+    nav.hidden.md\:flex { display: none !important; }
+    button.md\:hidden { display: flex !important; }
+    a.md\:inline-flex { display: none !important; }
+
+    /* why choose cards overflow fix */
+    .fade-up[style*="display:grid; grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+    section { padding: 3.5rem 0 !important; }
+
+    /* avoid horizontal overflow from fixed offsets */
+    body { overflow-x: hidden; }
+
+    /* hero spacing and CTA sizing */
+    .hero-inner { gap: 1.75rem !important; padding: 6rem 1rem 1.5rem !important; }
+    .btn-explore, .btn-wa {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 18px;
+    }
+
+    /* cards and content blocks */
+    .why-card, .review-card, .install-card, .spec-card { padding: 1.25rem !important; }
+
+    /* grids already switch in existing CSS; tighten gaps for smaller screens */
+    #productsGrid, .gallery-grid, .install-grid, .reviews-grid, .specs-grid, .about-grid {
+      gap: 14px !important;
+    }
+
+    /* countdown readability */
+    .cd-box { min-width: 68px; padding: 12px 10px; }
+    .cd-num { font-size: 2rem; }
+
+    /* modal / cart usability */
+    .cart-sidebar { width: 100vw; max-width: 100vw; }
+    .modal-overlay { padding: 0.5rem; }
+    .modal-box { width: 100%; max-height: 94vh; border-radius: 1rem; }
+
+    /* floating badges in about section can overflow on mobile */
+    .about-grid [style*="position:absolute"][style*="left:-20px"] { left: 10px !important; bottom: 10px !important; }
+    .about-grid [style*="position:absolute"][style*="right:-20px"] { right: 10px !important; top: 10px !important; }
+  }
+
+  @media (max-width: 480px) {
+    .filter-pill { padding: 8px 14px; font-size: 0.8rem; }
+    .hero-stats-grid { grid-template-columns: 1fr !important; }
+    .cd-box { min-width: 62px; }
+    .cd-num { font-size: 1.7rem; }
+
+    /* improve tap targets without changing behavior */
+    button, a.btn-wa, a[style*="Book Now"], .qty-btn {
+      min-height: 42px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -600,7 +658,7 @@
       <!-- RIGHT IMAGE -->
       <div class="fade-up" style="position:relative;">
         <div style="border-radius:1.75rem; overflow:hidden; height:460px;">
-          <img src="premium.png" alt="ScootyPro Showroom" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)';this.style.display='flex'" />
+          <img src="premium.png" alt="ScootyPro Showroom" loading="lazy" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)';this.style.display='flex'" />
         </div>
         <!-- Floating badge - bottom left -->
         <div style="position:absolute; bottom:24px; left:-20px; background:#fff; border-radius:14px; padding:12px 18px; box-shadow:0 12px 40px rgba(0,0,0,0.15); display:flex; align-items:center; gap:10px;">
@@ -675,25 +733,25 @@
     </div>
     <div class="gallery-grid fade-up" style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-bottom:2rem;">
       <div class="gallery-item" style="height:320px;">
-        <img src="gallery1.png" alt="Gallery 1" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
+        <img src="gallery1.png" alt="Gallery 1" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
         <div class="gallery-overlay">
           <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2); padding:8px 20px; border-radius:50px; color:#fff; font-weight:600; font-size:0.85rem;"><i class="fas fa-search-plus" style="margin-right:6px;"></i> View Full</div>
         </div>
       </div>
       <div class="gallery-item" style="height:320px;">
-        <img src="gallery2.png" alt="Gallery 2" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
+        <img src="gallery2.png" alt="Gallery 2" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
         <div class="gallery-overlay">
           <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2); padding:8px 20px; border-radius:50px; color:#fff; font-weight:600; font-size:0.85rem;"><i class="fas fa-search-plus" style="margin-right:6px;"></i> View Full</div>
         </div>
       </div>
       <div class="gallery-item" style="height:320px;">
-        <img src="gallery3.png" alt="Gallery 3" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
+        <img src="gallery3.png" alt="Gallery 3" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
         <div class="gallery-overlay">
           <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2); padding:8px 20px; border-radius:50px; color:#fff; font-weight:600; font-size:0.85rem;"><i class="fas fa-search-plus" style="margin-right:6px;"></i> View Full</div>
         </div>
       </div>
       <div class="gallery-item" style="height:320px;">
-        <img src="gallery4.png" alt="Gallery 4" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
+        <img src="gallery4.png" alt="Gallery 4" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
         <div class="gallery-overlay">
           <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2); padding:8px 20px; border-radius:50px; color:#fff; font-weight:600; font-size:0.85rem;"><i class="fas fa-search-plus" style="margin-right:6px;"></i> View Full</div>
         </div>
@@ -830,12 +888,12 @@
       <a href="#" style="display:inline-flex; align-items:center; gap:8px; color:#1D4ED8; font-weight:700; font-size:0.9rem; text-decoration:none; border:2px solid #1D4ED8; padding:10px 22px; border-radius:50px; transition:all 0.2s;" onmouseover="this.style.background='#1D4ED8';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#1D4ED8'"><i class="fab fa-instagram"></i> Follow @ScootyPro_PK</a>
     </div>
     <div class="fade-up" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
-      <div class="social-cell" style="border-radius:1rem;"><img src="gallery1.png" alt="Social Post" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
-      <div class="social-cell" style="border-radius:1rem;"><img src="gallery2.png" alt="Social Post" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
-      <div class="social-cell" style="border-radius:1rem;"><img src="gallery3.png" alt="Social Post" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
-      <div class="social-cell" style="border-radius:1rem;"><img src="gallery4.png" alt="Social Post" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
-      <div class="social-cell" style="border-radius:1rem;"><img src="gallery1.png" alt="Social Post" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
-      <div class="social-cell" style="border-radius:1rem;"><img src="gallery2.png" alt="Social Post" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
+      <div class="social-cell" style="border-radius:1rem;"><img src="gallery1.png" alt="Social Post" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
+      <div class="social-cell" style="border-radius:1rem;"><img src="gallery2.png" alt="Social Post" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
+      <div class="social-cell" style="border-radius:1rem;"><img src="gallery3.png" alt="Social Post" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
+      <div class="social-cell" style="border-radius:1rem;"><img src="gallery4.png" alt="Social Post" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
+      <div class="social-cell" style="border-radius:1rem;"><img src="gallery1.png" alt="Social Post" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
+      <div class="social-cell" style="border-radius:1rem;"><img src="gallery2.png" alt="Social Post" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" /><div class="social-overlay"><i class="fab fa-instagram" style="color:#fff; font-size:1.5rem;"></i><span style="color:#fff; font-size:0.75rem; font-weight:600;">View Post</span></div></div>
     </div>
   </div>
 </section>
@@ -1076,7 +1134,7 @@ function renderProducts(filter) {
     const bg = catBg[p.cat] || '#eef2ff';
     return '<div class="product-card fade-up" onclick="openQuickView(' + p.id + ')">' +
       '<div class="product-img-wrap" style="background:linear-gradient(145deg,' + bg + ' 0%,#fff 55%,#f8faff 100%);">' +
-        '<img class="product-img" src="' + p.img + '" alt="' + p.name + '" onerror="this.parentElement.style.background=\'linear-gradient(135deg,#dbeafe,#eff6ff)\'" />' +
+        '<img class="product-img" loading="lazy" src="' + p.img + '" alt="' + p.name + '" onerror="this.parentElement.style.background=\'linear-gradient(135deg,#dbeafe,#eff6ff)\'" />' +
         '<button class="quick-view-btn" onclick="event.stopPropagation();openQuickView(' + p.id + ')"><i class="fas fa-eye"></i> Quick View</button>' +
         '<span style="position:absolute;top:12px;left:12px;font-size:0.68rem;font-weight:800;padding:4px 10px;border-radius:50px;text-transform:uppercase;' + badge.color + '">' + badge.label + '</span>' +
       '</div>' +
@@ -1118,7 +1176,7 @@ function openQuickView(id) {
   let thumbs = '';
   for (let t = 0; t < 5; t++) {
     thumbs += '<div class="qv-thumb" style="border-color:' + (t===0?'#1D4ED8':'#e5e7eb') + ';" onclick="document.getElementById(\'qvMainImg\').src=\'' + p.img + '\';document.querySelectorAll(\'.qv-thumb\').forEach(function(el){el.style.borderColor=\'#e5e7eb\'});this.style.borderColor=\'#1D4ED8\'">' +
-      '<img src="' + p.img + '" style="width:100%;height:100%;object-fit:contain;padding:4px;" />' +
+      '<img src="' + p.img + '" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:4px;" />' +
     '</div>';
   }
   document.getElementById('quickViewContent').innerHTML =
