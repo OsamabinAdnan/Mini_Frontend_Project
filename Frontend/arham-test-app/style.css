@@ -1506,6 +1506,422 @@ body {
 }
 
 /* =========================================================
+   Comprehensive Mobile & Small-Screen Responsiveness
+   Optimized for iPhones, Android Phones & Tablets
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px 10px 50px;
+  }
+
+  .app-header {
+    padding: 12px 14px;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .header-brand {
+    gap: 10px;
+  }
+
+  .mascot-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  .brand-badge {
+    font-size: 0.72rem;
+    padding: 1px 8px;
+  }
+
+  .brand-text p {
+    font-size: 0.82rem;
+  }
+
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .star-counter-pill {
+    padding: 5px 12px;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 0 #d97706;
+  }
+
+  .btn-pill-header {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  #btn-print-sheet {
+    display: none;
+  }
+
+  /* Compact 3-Column Navigation Grid */
+  .modes-nav {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .mode-tab-btn {
+    padding: 8px 4px;
+    border-radius: var(--radius-sm);
+    gap: 4px;
+    box-shadow: 0 3px 0 #cbd5e1;
+  }
+
+  .mode-tab-btn .mode-icon {
+    font-size: 1.35rem;
+  }
+
+  .mode-tab-btn .mode-title {
+    font-size: 0.76rem;
+  }
+
+  /* Banner */
+  .panel-hero-banner {
+    padding: 12px 14px;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .banner-icon-badge {
+    width: 42px;
+    height: 42px;
+    font-size: 1.4rem;
+  }
+
+  .banner-title-group h2 {
+    font-size: 1.15rem;
+  }
+
+  .banner-title-group p {
+    font-size: 0.82rem;
+  }
+
+  .phonics-tip-card {
+    padding: 10px 14px;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .phonics-tip-card .tip-icon {
+    font-size: 1.5rem;
+  }
+
+  .phonics-tip-card .tip-text {
+    font-size: 0.88rem;
+  }
+
+  .phonics-tip-card .btn-listen-sound {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Sound Filter Group: Horizontal Touch Scroll on Mobile */
+  .sound-filter-group {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sound-filter-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-chip {
+    flex-shrink: 0;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+  }
+
+  /* Cards Grid */
+  .words-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .word-card {
+    padding: 14px 12px;
+    box-shadow: 0 4px 0 #cbd5e1;
+  }
+
+  .card-illustration-wrap {
+    width: 135px;
+    height: 135px;
+  }
+
+  .card-word-title {
+    font-size: 1.65rem;
+  }
+
+  /* Buttons on Cards: clean responsive grid */
+  .card-buttons-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .card-buttons-row .btn-card-action.spell-btn {
+    grid-column: 1 / -1; /* Spell Letters button takes full width */
+    order: -1; /* Placed top for prominence */
+    padding: 8px 6px;
+  }
+
+  .btn-card-action {
+    padding: 7px 4px;
+    font-size: 0.82rem;
+  }
+
+  /* Game Stage Card */
+  .game-play-card {
+    padding: 16px 12px;
+    border-width: 2px;
+    border-radius: var(--radius-md);
+  }
+
+  .game-stage-wrap {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stage-illustration-box {
+    width: 125px;
+    height: 125px;
+    padding: 6px;
+  }
+
+  .stage-word-display {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    gap: 4px;
+  }
+
+  .missing-slot-box {
+    min-width: 65px;
+    height: 52px;
+    font-size: 1.8rem;
+    padding: 0 8px;
+  }
+
+  /* Missing Sound Choices Grid */
+  .choices-quad-grid {
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .choice-btn-big {
+    padding: 10px 6px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 0 #cbd5e1;
+  }
+
+  .choice-btn-big .sound-name {
+    font-size: 1.65rem;
+  }
+
+  .choice-btn-big .sound-desc {
+    font-size: 0.75rem;
+  }
+
+  /* Letter Train: Dynamic Carriages that Never Overflow */
+  .train-wrapper {
+    padding: 14px 10px;
+    gap: 14px;
+  }
+
+  .train-target-preview {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .train-preview-thumb {
+    width: 75px;
+    height: 75px;
+  }
+
+  .train-slots-row {
+    gap: 6px;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 6px 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .train-slot {
+    width: clamp(42px, 13.5vw, 56px);
+    height: clamp(52px, 16vw, 64px);
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    flex-shrink: 0;
+  }
+
+  .train-slot.prefilled::after {
+    font-size: 0.55rem;
+    margin-top: -3px;
+  }
+
+  .train-tiles-pool {
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .letter-tile-btn {
+    width: clamp(40px, 13vw, 52px);
+    height: clamp(46px, 15vw, 58px);
+    font-size: clamp(1.4rem, 5vw, 1.85rem);
+    box-shadow: 0 3px 0 #0369a1;
+  }
+
+  .train-mode-switcher {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-train-mode {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  /* Detective Picture Cards */
+  .audio-prompt-box {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .btn-big-speaker {
+    padding: 10px 18px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 0 #5b21b6;
+  }
+
+  .detective-pictures-grid {
+    gap: 8px;
+  }
+
+  .detective-pic-card {
+    padding: 8px;
+    box-shadow: 0 3px 0 #cbd5e1;
+  }
+
+  /* Memory Cards */
+  .memory-grid {
+    gap: 8px;
+  }
+
+  .memory-face.back {
+    font-size: 1.6rem;
+  }
+
+  .memory-face.front .memory-word-text {
+    font-size: 0.95rem;
+  }
+
+  /* Monday Test */
+  .test-option-btn {
+    padding: 11px 16px;
+    font-size: 1.3rem;
+  }
+
+  /* Modal Certificate */
+  .modal-card {
+    padding: 20px 14px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-badge-img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+  }
+
+  .modal-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .certificate-frame {
+    padding: 14px 10px;
+    margin: 12px 0;
+  }
+
+  .cert-child-name {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+
+  .btn-primary-action {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+}
+
+/* Extra small mobile screens (iPhone SE, Galaxy Fold outer, screens <= 380px) */
+@media (max-width: 380px) {
+  .app-container {
+    padding: 6px 6px 40px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.15rem;
+  }
+
+  .header-actions {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .btn-pill-header {
+    padding: 5px 8px;
+    font-size: 0.74rem;
+  }
+
+  .modes-nav {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 4px;
+  }
+
+  .mode-tab-btn {
+    padding: 6px 2px;
+  }
+
+  .mode-tab-btn .mode-icon {
+    font-size: 1.15rem;
+  }
+
+  .mode-tab-btn .mode-title {
+    font-size: 0.68rem;
+  }
+
+  .train-slot {
+    width: 38px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .letter-tile-btn {
+    width: 36px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+}
+
+/* =========================================================
    Print Styles for Monday Test Sheet & Certificate
    ========================================================= */
 @media print {
