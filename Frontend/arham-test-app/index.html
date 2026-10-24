@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arham's Super Phonics Adventure | Sh, Ch, Oa & Ee Spelling App</title>
+  <meta name="description" content="Fun interactive phonics learning and spelling game for children preparing for Monday's test. Covers Sh, Ch, Oa, and Ee sound digraphs with pictures and audio.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Background Clouds -->
+  <div class="bg-decorations" aria-hidden="true">
+    <div class="cloud-bubble"></div>
+    <div class="cloud-bubble"></div>
+    <div class="cloud-bubble"></div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <main class="app-container">
+
+    <!-- Top Header & Mascot Bar -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="mascot-avatar">
+          <img src="assets/mascot.jpg" alt="Phonics Fox Mascot" id="mascot-img">
+        </div>
+        <div class="brand-text">
+          <h1>
+            Arham's Phonics Quest
+            <span class="brand-badge">Monday Test Prep</span>
+          </h1>
+          <p>Master 35 Words: <strong>Sh</strong>, <strong>Ch</strong>, <strong>Oa</strong> &amp; <strong>Ee</strong></p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Star Counter -->
+        <div class="star-counter-pill" id="star-counter-pill" title="Stars Earned!">
+          <span class="star-icon-anim">⭐</span>
+          <span id="star-count-text">0</span>
+        </div>
+
+        <!-- Voice Speed Switcher -->
+        <button class="btn-pill-header" id="btn-voice-speed" title="Toggle Voice Speed">
+          🐢 Turtle Speed
+        </button>
+
+        <!-- Sound Audio Switcher -->
+        <button class="btn-pill-header" id="btn-sound-mute" title="Sound Effects">
+          🔊 Sound On
+        </button>
+
+        <!-- Print Flashcards / Test Sheet -->
+        <button class="btn-pill-header" id="btn-print-sheet" title="Print Practice Sheet">
+          🖨️ Print Sheet
+        </button>
+      </div>
+    </header>
+
+    <!-- Activity Mode Selector Tabs -->
+    <nav class="modes-nav" aria-label="Learning Activities">
+      <button class="mode-tab-btn active" data-mode="safari" id="tab-safari">
+        <span class="mode-icon">🎒</span>
+        <span class="mode-title">Sound Safari</span>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="missing" id="tab-missing">
+        <span class="mode-icon">🎯</span>
+        <span class="mode-title">Missing Sound</span>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="listen" id="tab-listen">
+        <span class="mode-icon">👂</span>
+        <span class="mode-title">Listen &amp; Find</span>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="builder" id="tab-builder">
+        <span class="mode-icon">🚂</span>
+        <span class="mode-title">Letter Train</span>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="memory" id="tab-memory">
+        <span class="mode-icon">🃏</span>
+        <span class="mode-title">Memory Match</span>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="test" id="tab-test">
+        <span class="mode-icon">🏆</span>
+        <span class="mode-title">Monday Test</span>
+      </button>
+    </nav>
+
+    <!-- ========================================================
+         Activity 1: Sound Safari (Flashcards & Audio explorer)
+         ======================================================== -->
+    <section class="activity-panel active" id="panel-safari">
+      <div class="panel-hero-banner">
+        <div class="banner-left">
+          <div class="banner-icon-badge">📖</div>
+          <div class="banner-title-group">
+            <h2>Sound Safari Explorer</h2>
+            <p>Tap any card to hear pronunciation and spell it out!</p>
+          </div>
+        </div>
+
+        <div class="sound-filter-group" role="tablist">
+          <button class="filter-chip active" data-filter="all">All (35)</button>
+          <button class="filter-chip" data-filter="sh">Sh 🦈 (9)</button>
+          <button class="filter-chip" data-filter="ch">Ch 🥪 (8)</button>
+          <button class="filter-chip" data-filter="oa">Oa ⛵ (8)</button>
+          <button class="filter-chip" data-filter="ee">Ee 🐝 (10)</button>
+        </div>
+      </div>
+
+      <!-- Phonics Tip Box -->
+      <div class="phonics-tip-card" id="phonics-tip-wrap">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+      <!-- 35 Word Cards Grid -->
+      <div class="words-grid" id="safari-cards-grid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Activity 2: Missing Sound Pop
+         ======================================================== -->
+    <section class="activity-panel" id="panel-missing">
+      <div class="game-play-card">
+        <div class="game-status-bar">
+          <div class="status-badge round">🎯 Missing Sound Game</div>
+          <div class="status-badge streak">🔥 Streak: <span id="missing-streak-count">0</span></div>
+        </div>
+
+        <div class="game-stage-wrap">
+          <div class="stage-illustration-box" id="missing-img-box">
+            <!-- Target image inserted via JS -->
+          </div>
+
+          <div class="stage-word-display" id="missing-word-display">
+            <!-- Missing word slots -->
+          </div>
+
+          <p style="color: var(--text-muted); font-weight: 700; font-size: 1.1rem;">
+            Which phonics sound completes this word?
+          </p>
+        </div>
+
+        <!-- 4 Bouncy Choice Buttons -->
+        <div class="choices-quad-grid">
+          <button class="choice-btn-big" data-sound="sh">
+            <span class="sound-name">Sh</span>
+            <span class="sound-desc">as in Sheep</span>
+          </button>
+
+          <button class="choice-btn-big" data-sound="ch">
+            <span class="sound-name">Ch</span>
+            <span class="sound-desc">as in Chat</span>
+          </button>
+
+          <button class="choice-btn-big" data-sound="oa">
+            <span class="sound-name">Oa</span>
+            <span class="sound-desc">as in Boat</span>
+          </button>
+
+          <button class="choice-btn-big" data-sound="ee">
+            <span class="sound-name">Ee</span>
+            <span class="sound-desc">as in Bee</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Activity 3: Listen & Find (Detective Quiz)
+         ======================================================== -->
+    <section class="activity-panel" id="panel-listen">
+      <div class="game-play-card">
+        <div class="game-status-bar">
+          <div class="status-badge round">👂 Sound Detective</div>
+          <div class="status-badge streak">⭐ Listen &amp; Tap the Match!</div>
+        </div>
+
+        <div class="audio-prompt-box">
+          <p style="font-weight: 700; color: #6d28d9; font-size: 1.15rem;">
+            Press the speaker button and listen to the secret word!
+          </p>
+          <button class="btn-big-speaker" id="btn-listen-again">
+            <span class="speaker-icon">🔊</span>
+            <span>Listen Again</span>
+          </button>
+        </div>
+
+        <!-- 4 Choice Picture Cards -->
+        <div class="detective-pictures-grid" id="detective-grid">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Activity 4: Letter Train (Half-Word Fill-In Exercise)
+         ======================================================== -->
+    <section class="activity-panel" id="panel-builder">
+      <div class="game-play-card">
+        <div class="game-status-bar">
+          <div class="status-badge round">🚂 Letter Train: Fill The Blanks</div>
+          <div class="status-badge streak">⭐ Spell for Monday!</div>
+        </div>
+
+        <!-- Mode Switcher: Phonics Blanks vs Mixed Blanks -->
+        <div class="train-mode-switcher" role="group" aria-label="Exercise Style">
+          <button class="btn-train-mode active" id="btn-train-phonics" title="Missing target sound like fi_ _ or b_ _t">
+            🎯 Phonics Blanks (e.g. fi_ _)
+          </button>
+          <button class="btn-train-mode" id="btn-train-mixed" title="Missing alternate letters like s_o_p">
+            🎲 Mixed Blanks (e.g. s_o_p)
+          </button>
+        </div>
+
+        <div class="train-wrapper">
+          <div class="train-target-preview">
+            <div class="train-preview-thumb" id="builder-preview-img"></div>
+            <div>
+              <p style="font-weight: 800; font-size: 1.15rem; color: #15803d;">
+                Half the word is given! Fill in the missing letters:
+              </p>
+              <div style="display: flex; gap: 8px; margin-top: 6px;">
+                <button class="btn-builder-tool" id="btn-builder-hear">
+                  🔊 Hear Word
+                </button>
+                <span style="font-size: 0.85rem; color: #64748b; align-self: center; font-weight: 600;">
+                  (Type on keyboard or tap tiles below)
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Train Carriage Slots (Prefilled + Blanks) -->
+          <div class="train-slots-row" id="train-slots-row">
+            <!-- Train slots -->
+          </div>
+        </div>
+
+        <!-- Letter Tiles Tray -->
+        <div class="train-tiles-pool" id="train-tiles-pool">
+          <!-- Letter tiles -->
+        </div>
+
+        <div class="builder-controls-row">
+          <button class="btn-builder-tool" id="btn-builder-clear">
+            🔄 Clear Blanks
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Activity 5: Memory Match
+         ======================================================== -->
+    <section class="activity-panel" id="panel-memory">
+      <div class="game-play-card">
+        <div class="memory-status-row">
+          <div class="status-badge round">🃏 Memory Card Match</div>
+          <button class="btn-pill-header" onclick="UI.initMemoryGame()">
+            🔀 New Cards
+          </button>
+        </div>
+
+        <div class="memory-grid" id="memory-grid">
+          <!-- 8 cards flipped via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Activity 6: Monday Practice Test
+         ======================================================== -->
+    <section class="activity-panel" id="panel-test">
+      <div class="game-play-card">
+        <div class="test-progress-bar-wrap">
+          <div class="test-progress-fill" id="test-progress-fill"></div>
+        </div>
+
+        <div class="game-status-bar">
+          <div class="status-badge round" id="test-counter-text">Question 1 of 10</div>
+          <div class="status-badge streak">Monday Test Simulator</div>
+        </div>
+
+        <div class="game-stage-wrap">
+          <div class="stage-illustration-box" id="test-img-box">
+            <!-- Image inserted via JS -->
+          </div>
+          <p style="font-size: 1.25rem; font-weight: 800; color: #1e293b;">
+            Which spelling matches this picture?
+          </p>
+        </div>
+
+        <div class="test-options-list" id="test-options-list">
+          <!-- Options rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       Super Speller Certificate Modal
+       ======================================================== -->
+  <div class="modal-overlay" id="certificate-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      <img src="assets/badge.jpg" alt="Super Speller Badge" class="modal-badge-img">
+      <h2>SUPER SPELLER!</h2>
+      <p style="font-size: 1.1rem; color: #78350f; font-weight: 700;">Certificate of Phonics Excellence</p>
+
+      <div class="certificate-frame">
+        <p style="font-size: 0.95rem; color: #64748b; font-weight: 700;">Awarded with pride to:</p>
+        <div class="cert-child-name" id="cert-name-text">Arham</div>
+        <p style="font-size: 1.1rem; font-weight: 700; color: #0369a1; margin-top: 6px;">
+          For mastering the <strong>Sh</strong>, <strong>Ch</strong>, <strong>Oa</strong> &amp; <strong>Ee</strong> words!
+        </p>
+        <div style="font-size: 1.4rem; font-weight: 800; color: #f59e0b; margin-top: 10px;" id="cert-score-text">
+          10 / 10 ⭐
+        </div>
+        <div id="cert-review-words"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-primary-action" onclick="window.print()">
+          🖨️ Print Certificate
+        </button>
+        <button class="btn-primary-action" onclick="UI.startMondayTest()" style="background: linear-gradient(135deg, #10b981, #059669); border-color: #047857;">
+          🔄 Test Again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="words-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
